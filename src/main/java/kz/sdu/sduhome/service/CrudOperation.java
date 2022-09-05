@@ -2,7 +2,7 @@ package kz.sdu.sduhome.service;
 
 import java.util.List;
 
-public interface CRUDOperation<D, ID> {
+public interface CrudOperation<D, ID> {
     D create(D d);
 
     List<D> read();

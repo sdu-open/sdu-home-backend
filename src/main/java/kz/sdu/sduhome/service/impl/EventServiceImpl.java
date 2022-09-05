@@ -66,12 +66,6 @@ public class EventServiceImpl extends BaseSingleEntityService<Event, EventDto> i
     }
 
     @Override
-    public List<EventDto> showAllByEnable() {
-        List<Event> events = repository.findEventsByEnable(true);
-        return events.stream().map(this::convertToDto).toList();
-    }
-
-    @Override
     protected Event convertToEntity(EventDto eventDto) throws ServerLogicException {
         final Event dbEvent = repository.findById(eventDto.getId()).orElseThrow(() -> new ServerLogicException("Can't find event by id"));
         final Set<EventContact> contacts = new HashSet<>(contactRepository.findAllById(eventDto.getContacts().stream()
